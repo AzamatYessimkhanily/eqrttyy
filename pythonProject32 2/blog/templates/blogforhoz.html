@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<div class="container">
+    <h1>Incidents</h1>
+    <div class="row">
+        {% for incident in incidents %}
+        <div class="col-md-4 mb-4">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal">
+                Incident #{{ incident.id }}
+            </button>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="modal" tabindex="-1"
+             aria-labelledby="modalLabel" aria-hidden="true">
+            <div class="modal-dialog" >
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalLabel">Incident </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>Location:</strong> {{ incident.location }}</p>
+                        <p><strong>Description:</strong> {{ incident.description }}</p>
+                        <p><strong>Phone number:</strong> {{ incident.phone_number }}</p>
+                        <p><strong>Full name:</strong> {{ incident.full_name }}</p>
+                        <p><strong>Email:</strong> {{ incident.email }}</p>
+                        <p><strong>Is foundation employee:</strong> {{ incident.is_foundation_employee }}</p>
+                        <p><strong>Department:</strong> {{ incident.dep }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+	<script>
+		function openModal(incident) {
+			var modal = document.getElementById(incident + "-modal");
+			modal.style.display = "block";
+		}
+
+		function closeModal(incident) {
+			var modal = document.getElementById(incident + "-modal");
+			modal.style.display = "none";
+		}
+	</script>
+</body>
+</html>
